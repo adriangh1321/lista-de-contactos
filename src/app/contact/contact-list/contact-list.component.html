@@ -1,0 +1,42 @@
+
+<div class="container">
+    <div class="row mb-2">
+        <h2 class="text-light">Mis contactos</h2>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+    <button class="btn btn-secondary"[routerLink]="['/']">Volver</button>
+        </div>
+        
+    </div>
+    <div class="row">
+        <ul class="list-group list-group-horizontal" *ngIf="contacts.length;else emptyContacts">
+            <li class="list-group-item" *ngFor="let contact of contacts">
+                <div class="card border-light mb-3">
+                    <div class="card-header bg-transparent border-light text-light"># {{contact.id}}</div>
+                    <div class="card-body text-light">
+                      <h5 class="card-title">{{contact.firstName}} {{contact.lastName}}</h5>
+                      <p class="card-text">{{contact.email}}</p>
+                      <p class="card-text">{{contact.phone}}</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-light">
+                        <button class="btn btn-primary me-2" [routerLink]="['/edit',contact.id]">Editar</button>
+                        <button class="btn btn-danger" (click)="deleteContact(contact.id)">Eliminar</button>
+                    </div>
+                  </div>
+        
+            </li>
+        </ul>
+
+        <ng-template #emptyContacts>
+            <div class="container-empty text-light">
+                No hay contactos disponibles
+            </div>
+        </ng-template>
+        
+        
+    </div>
+
+</div>
+
+
